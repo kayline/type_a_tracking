@@ -1,0 +1,9 @@
+<h2>Begin a New Machine</h2>
+
+<%= form_for @machine do |f| %>
+	<%= f.label 'Serial Number' %>
+	<%= f.text_field :serial_num %>
+	<%= f.label "Customer ID" %>
+	<%= f.text_field :customer_id %>
+	<%= f.submit %>
+<% end %>

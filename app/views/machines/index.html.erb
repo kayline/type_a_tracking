@@ -1,0 +1,20 @@
+<h2>All Machines</h2>
+
+<%= link_to "Start New Machine", new_machine_path %>
+
+<ul class='machines-list'>
+	<li>
+		<ul class='headers'>
+			<li>Serial Number</li>
+		</ul>
+	</li>
+	<% @machines.each do |m| %>
+		<li>
+			<ul class='machine-info'>
+				<li><%= link_to m.serial_num, m %></li>
+			</ul>
+		</li>
+	<% end %>
+</ul>
+
+
