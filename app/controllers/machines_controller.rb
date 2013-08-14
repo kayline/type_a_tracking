@@ -10,9 +10,8 @@ class MachinesController < ApplicationController
 	def create
 		p params
 		@machine = Machine.new(machine_params)
+		@machine.build_assembly_project
 		if @machine.save
-			@assembly_process = AssemblyProc.create
-			@machine.assembly_procs << @assembly_process
 			redirect_to machines_path
 		else
 			render :new
