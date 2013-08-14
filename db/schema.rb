@@ -17,12 +17,18 @@ ActiveRecord::Schema.define(version: 20130814010324) do
   enable_extension "plpgsql"
 
   create_table "assem_tasks", force: true do |t|
-    t.integer  "subassem_proc_id"
+    t.integer  "subassembly_id"
     t.string   "title"
     t.string   "description"
-    t.boolean  "complete",         default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "assem_tasks_machines", force: true do |t|
+    t.integer  "assem_task_id"
+    t.integer  "machine_id"
+    t.boolean  "complete",      default: false
+    t.datetime "completed"
   end
 
   create_table "assembly_procs", force: true do |t|
@@ -41,11 +47,9 @@ ActiveRecord::Schema.define(version: 20130814010324) do
     t.datetime "updated_at"
   end
 
-  create_table "subassem_procs", force: true do |t|
-    t.integer  "assembly_proc_id"
+  create_table "subassemblies", force: true do |t|
     t.string   "name"
     t.integer  "stage"
-    t.boolean  "complete",         default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

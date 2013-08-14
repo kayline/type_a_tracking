@@ -13,20 +13,23 @@ class AssemblyTables < ActiveRecord::Migration
   		t.timestamps
 		end
 
-		create_table :subassem_procs do |t|
-			t.references :assembly_proc
+		create_table :subassemblies do |t|
 			t.string :name
 			t.integer :stage
-			t.boolean :complete, default: false
 			t.timestamps
 		end
 
 		create_table :assem_tasks do |t|
-			t.references :subassem_proc
+			t.references :subassembly
 			t.string :title
 			t.string :description
-			t.boolean :complete, default: false
 			t.timestamps
+		end
+
+		create_table :assem_tasks_machines do |t|
+			t.references :assem_task, :machine
+			t.boolean :complete, default: false
+			t.datetime :completed
 		end
 
   end
