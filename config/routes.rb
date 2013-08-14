@@ -1,6 +1,6 @@
 TypeATracking::Application.routes.draw do
 
-  resources :machines, :assembly_records
+  resources :machines, :assembly_projects
   root 'machines#index'
   get 'assembly_process/edit' => 'assembly_process#edit'
   post 'assembly_process/edit' => 'assembly_process#update'
