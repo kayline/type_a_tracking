@@ -11,6 +11,10 @@ class MachinesController < ApplicationController
 		p params
 		@machine = Machine.new(machine_params)
 		@machine.build_assembly_project
+		@tasks = AssemTask.all
+		@tasks.each do |t|
+			@machine.assem_tasks_machines.build(:assem_task_id => t.id)
+		end
 		if @machine.save
 			redirect_to machines_path
 		else
