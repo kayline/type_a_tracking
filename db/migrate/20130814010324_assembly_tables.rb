@@ -1,16 +1,16 @@
 class AssemblyTables < ActiveRecord::Migration
   def change
-	create_table :machines do |t|
-		t.integer :serial_num
-		t.references :customer
-		t.timestamps
-	end
+  	create_table :machines do |t|
+  		t.integer :serial_num
+  		t.references :customer
+  		t.timestamps
+  	end
 
-	create_table :assembly_procs do |t|
+  	create_table :assembly_procs do |t|
 			t.references :machine
-		t.date :begin_date, :end_date
-		t.boolean :complete, default: false
-		t.timestamps
+  		t.date :begin_date, :end_date
+  		t.boolean :complete, default: false
+  		t.timestamps
 		end
 
 		create_table :subassem_procs do |t|
