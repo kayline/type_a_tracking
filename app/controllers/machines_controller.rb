@@ -11,6 +11,8 @@ class MachinesController < ApplicationController
 		p params
 		@machine = Machine.new(machine_params)
 		if @machine.save
+			@assembly_process = AssemblyProc.create
+			@machine.assembly_procs << @assembly_process
 			redirect_to machines_path
 		else
 			render :new
