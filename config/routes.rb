@@ -2,6 +2,8 @@ TypeATracking::Application.routes.draw do
 
   resources :machines, :assembly_projects
   root 'machines#index'
+  get 'assembly_process/edit' => 'assembly_process#edit'
+  post 'assembly_process/edit' => 'assembly_process#update'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

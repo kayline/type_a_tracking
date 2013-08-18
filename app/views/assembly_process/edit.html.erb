@@ -1,0 +1,12 @@
+<h2>Update the Assembly Process</h2>
+
+<ul class='subassemblies-list'>
+	<% @subassemblies.each do |sa| %>
+		<li><%= "Stage: " + sa.stage.to_s + " - " + sa.name %></li>
+			<ul>
+				<% sa.assem_tasks.each do |task| %>
+					<li><%= task.title %></li>
+				<% end %>
+			</ul>
+	<% end %>
+</ul>
