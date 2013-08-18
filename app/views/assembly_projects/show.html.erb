@@ -1,0 +1,23 @@
+<h2>Track Machine Assembly</h2>
+<h4>Serial Number: <%= @machine.serial_num %></h4>
+
+<% @subassemblies.each do |sa| %>
+	<div class='subassembly-block'>
+		<h3><%= sa.name %></h3>
+		<ol>
+			<% @sorted_tasks[sa].each do |t| %>
+				<li>
+					<%= form_tag ("/complete_task/#{t.id}") do %>
+						<% if t.complete? %>
+							<%= label_tag(t.id, t.title, :class => 'complete')  %>
+							<%= check_box_tag(t.id, "1", true) %>
+						<% else %>
+							<%= label_tag(t.id, t.title, :class => 'incomplete')  %>
+							<%= check_box_tag(t.id, "1") %>
+						<% end %>
+					<% end %>
+				</li>
+			<% end %>
+		</ol>
+	</div>
+<% end %>
